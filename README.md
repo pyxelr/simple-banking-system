@@ -44,7 +44,7 @@ The application uses the **sqlite3** package to store all created cards in a dat
 * db is called card.s3db
 * database is reset upon each run for ease of use.
 
-## Usage:
+## Usage
 Open your terminal inside the [banking](Simple%20Banking%20System/banking) folder and run:
 ``` 
 python banking.py
