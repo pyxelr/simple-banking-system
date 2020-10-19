@@ -24,7 +24,7 @@ This code was written for the [Simple Banking System assignment](https://hypersk
 I learned/practised:
 * how the banking system works
 * the purpose of the Luhn algorithm
-* Python prorgramming (classes, decorators, modular programming)
+* Python programming (classes, decorators, modular programming)
 * design of a CLI menu application
 * verifying and preventing errors from the user's input
 * saving data in the SQLite database through a Python script.
