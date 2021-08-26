@@ -22,6 +22,7 @@ This code was written for the [Simple Banking System assignment](https://hypersk
 ## Learning Outcomes
 
 I learned/practised:
+
 * how the banking system works
 * the purpose of the Luhn algorithm
 * Python programming (classes, decorators, modular programming)
@@ -31,7 +32,7 @@ I learned/practised:
 
 ## Additional Description
 
-### Luhn algorithm 
+### Luhn algorithm
 
 In our banking system, the Issuer Identification Number (IIN) is 400000, the customer account number can be any number, but it should be unique and have a length of 16 digits. The very last digit of a credit card is the check digit or checksum. It is used to validate the credit card number using the [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm).
 
@@ -40,29 +41,36 @@ Basically, the Luhn algorithm is used to create a checksum for a 15 digit random
 ### sqlite3 database
 
 The application uses the **sqlite3** package to store all created cards in a database:
+
 * database will automatically be created upon running
 * db is called card.s3db
 * database is reset upon each run for ease of use.
 
 ## Usage
+
 Open your terminal inside the [banking](Simple%20Banking%20System/banking) folder and run:
-``` 
+
+```console
 python banking.py
 ```
 
 ## Workflow
 
-The symbol ```>``` represents the user input. Notice that it's not a part of the input.
+The symbol `>` represents the user input. Notice that it's not a part of the input.
 
 ### main menu actions
+
 Once the program starts, it prints the main menu:
-```
+
+```console
 1. Create an account
 2. Log into account
 0. Exit
 ```
-* **1. Create an account** – generate a new card number which satisfies all the conditions. Afterwards, generate a PIN code that belongs to the generated card number. A PIN code is a sequence of any 4 digits. PIN should be generated in a range from 0000 to 9999:
-```
+
+**1. Create an account** – generate a new card number which satisfies all the conditions. Afterwards, generate a PIN code that belongs to the generated card number. A PIN code is a sequence of any 4 digits. PIN should be generated in a range from 0000 to 9999:
+
+```console
 > 1
 
 Your card has been created
@@ -72,8 +80,9 @@ Your card PIN:
 5045
 ```
 
-* **2. Log into account** – ask the user to enter the card information. The program will store all generated data until it is terminated so that the user is able to log into any of the created accounts with the right card number and its pin. If the provided card number or PIN is incorrect, the user will be not able to log in:
-```
+**2. Log into account** – ask the user to enter the card information. The program will store all generated data until it is terminated so that the user is able to log into any of the created accounts with the right card number and its pin. If the provided card number or PIN is incorrect, the user will be not able to log in:
+
+```console
 > 2
 
 Enter your card number:
@@ -84,7 +93,7 @@ Wrong card number or PIN!
 
 1. Create an account
 2. Log into account
-0. Exit
+3. Exit
 
 > 2
 
@@ -96,8 +105,10 @@ You have successfully logged in!
 ```
 
 ### account menu actions
+
 After all login information is entered correctly, the program will allow the user to check the account balance; right after creating the account, the balance should be 0. It should also be possible to log out of the account and exit the program:
-```
+
+```console
 1. Balance
 2. Add income
 3. Do transfer
@@ -105,39 +116,42 @@ After all login information is entered correctly, the program will allow the use
 5. Log out
 0. Exit
 ```
-* **1. Balance** – read the balance of the account from the database and output it into the console:
-```
+
+**1. Balance** – read the balance of the account from the database and output it into the console:
+
+```console
 > 1
 
 Balance: 0
 ```
-* **2. Add income** – deposit the requested amount on the account:
-```
+
+**2. Add income** – deposit the requested amount on the account:
+
+```console
 > 2
 
 Enter income:
 > 423
 Income was added!
 ```
+
 Later, when checking the balance it will be 0 + 423 = 423:
-```
+
+```console
 > 1
 
 Balance: 423
 ```
-* **3. Do transfer** – transfer money to another account. This feature includes the following errors:
 
-– If the user tries to transfer more money than he/she has, output: "_Not enough money!_"
+**3. Do transfer** – transfer money to another account. This feature includes the following errors:
 
-– If the user tries to transfer money to the same account, output the following message: "_You can't transfer money to the same account!_"
+* if the user tries to transfer more money than he/she has, output: "_Not enough money!_"
+* if the user tries to transfer money to the same account, output the following message: "_You can't transfer money to the same account!_"
+* if the receiver's card number doesn’t pass the Luhn algorithm, you should output: "_Probably you made a mistake in the card number. Please try again!_"
+* if the receiver's card number doesn’t exist, you should output: "_Such a card does not exist._"
+* if there is no error, ask the user how much money they want to transfer and make the transaction.
 
-– If the receiver's card number doesn’t pass the Luhn algorithm, you should output: "_Probably you made a mistake in the card number. Please try again!_"
-
-– If the receiver's card number doesn’t exist, you should output: "_Such a card does not exist._"
-
-– If there is no error, ask the user how much money they want to transfer and make the transaction.
-
-```
+```console
 > 3
 
 Enter card number:
@@ -146,20 +160,26 @@ Enter how much money you want to transfer:
 > 200
 Success!
 ```
-* **4. Close account** – delete the logged in account from the database:
-```
+
+**4. Close account** – delete the logged in account from the database:
+
+```console
 > 4
 
 The account has been closed!
 ```
-* **5. Log Out** – log out the user and come back to the main menu:
-```
+
+**5. Log Out** – log out the user and come back to the main menu:
+
+```console
 > 5
 
 You have successfully logged out!
 ```
-* **0. Exit** – terminate the simulation and say "Bye!" to the user:
-```
+
+**0. Exit** – terminate the simulation and say "Bye!" to the user:
+
+```console
 > 0
 
 Bye!
